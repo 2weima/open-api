@@ -1,0 +1,22 @@
+{
+    "name": "2weima/open-api",
+    "description": "二维码解码与生成接口 2weima.com api composer",
+    "homepage": "https://api.2weima.com/",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "二维工坊",
+            "homepage": "https://jie.2weima.com/"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "api_2weima_com\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0"
+    }
+}
