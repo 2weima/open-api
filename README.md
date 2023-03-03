@@ -40,6 +40,7 @@ use api_2weima_com\Client as api_2weima_client;
 $config = array(
 	'token'=> '3816|RMSuQC....uwAGenrYf', //换成你自己的token 
 	'is_mock'=>false, // usemock.com 测试数据
+	'is_https'=>true,// 部分php curl 处理 https 时出错，可以切换到 http
 	'auto_compress'=>true, //本地图片压缩后再解码，速度更快
 	'compress_max_width'=>800, //图片最大宽度 ，如果你的图片很大尺寸，建议调整到合适大小进行压缩，取得更快的速度
 	'compress_max_height'=>1200,//图片最大高度
