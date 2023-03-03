@@ -13,7 +13,7 @@ namespace  samples;
 
 /*
 	安装方式
-	1. 通用方式 include_once  若不用 命名空间，请注释掉  qrcpuCOM.php  的 namespace qrcpu;
+	1. 通用方式 include_once  若不用 命名空间，请注释掉  client.php  的 namespace api_2weima_com;
 	2. 通过 composer 安装
 */
 include_once '../src/client.php';

@@ -18,6 +18,8 @@
 接口文档：https://www.usemock.com/docs/61dd9d92e403d6df879a6841
 
 ### install
+依赖PHP Curl 扩展
+
 ```
 composer require "2weima/open-api"
 ```
