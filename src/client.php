@@ -15,10 +15,12 @@ namespace api_2weima_com;
 class client
 {
 
-	const HOST_URL = 'https://api.2weima.com';
+	const HOST_HTTPS = 'https://api.2weima.com';
+	const HOST_HTTP = 'http://api.2weima.com';
 	const USEMOCK_URL = 'https://2weima.usemock.com'; // usemock.com 模拟数据的
 
 	public $is_mock = false;//返回模拟数据
+	public $is_https = true;//使用 HOST_HTTPS
 	/**
 	 * 在这获取 https://www.2weima.com/user/api_tokens/index.html   
 	 * 需要授权 ： qr:encode  qr:decode
@@ -53,7 +55,7 @@ class client
 	{
 		foreach($config as $key => $val){
 			if(in_array($key,[
-				'is_mock','token','auto_compress','compress_max_width','compress_max_height','compress_quality',
+				'is_mock','is_https','token','auto_compress','compress_max_width','compress_max_height','compress_quality',
 				//qrdecode
 				'qr_image',
 				'qr_base64',
@@ -275,7 +277,6 @@ class client
 		return $this;
 	}
 
-
 	
 	/*
 		图片转base64
@@ -405,8 +406,10 @@ class client
 			'Accept: application/json'
 			// 'Content-Type:application/x-www-form-urlencoded; charset=UTF-8'
 		];
-	
-		$url = ($this->is_mock ? self::USEMOCK_URL : self::HOST_URL) . $path;
+		
+		$host = $this->is_https ? self::HOST_HTTPS : self::HOST_HTTP;
+		$url = ($this->is_mock ? self::USEMOCK_URL : $host ) . $path;
+
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
 		curl_setopt($curl, CURLOPT_URL, $url);
@@ -423,6 +426,14 @@ class client
 		// curl_setopt($curl, CURLOPT_POSTFIELDS, $bodys); // application/x-www-form-urlencoded
 		$content = curl_exec($curl);
 		
+		// 检查错误代码并显示错误信息
+		// if($errno = curl_errno($curl)) {
+		// 	var_dump($errno);
+		// }
+
+		// 关闭句柄
+		curl_close($curl);
+
 		return $content;
 	}
 

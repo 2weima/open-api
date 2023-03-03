@@ -28,6 +28,7 @@ use api_2weima_com\client as api_2weima_client;
 $config = array(
 	'token'=> '3816|RMSuQC....uwAGenrYf', //换成你自己的token 
 	'is_mock'=>false,
+	'is_https'=>true,// 部分php curl 处理 https 时出错，可以切换到 http
 	'auto_compress'=>true, //本地图片压缩后再解码，速度更快
 	'compress_max_width'=>800, //图片最大宽度 ，如果你的图片很大尺寸，建议调整到合适大小进行压缩，取得更快的速度
 	'compress_max_height'=>1200,//图片最大高度
@@ -64,8 +65,8 @@ exit;
 $result = $client
 	->set_image('https://www.2weima.com/static/images/weixin-kefu.jpg')
 	// ->set_image_local('./kefu.jpg')
-	// ->set_multi('one')
-	// ->set_detype('jie2weima')
+	// ->set_multi('one') //one 只返回一个结果 ， multi 返回多个解码结果 （ 使用 jie12weima 同时识别条码和二维码）
+	// ->set_detype('jie2weima') // 条码：jie1weima  二维码：jie2weima   条码和二维码 ：jie12weima 
 	->qrdecode();
 var_dump($result);
 

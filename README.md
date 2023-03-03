@@ -58,8 +58,8 @@ $client = new api_2weima_client($config);
 $result = $client
 	->set_image('https://www.2weima.com/static/images/weixin-kefu.jpg')
 	// ->set_image_local('./kefu.jpg')
-	// ->set_multi('one')
-	// ->set_detype('jie2weima')
+	// ->set_multi('one') //one 只返回一个结果 ， multi 返回多个解码结果 （ 使用 jie12weima 同时识别条码和二维码）
+	// ->set_detype('jie2weima') // 条码：jie1weima  二维码：jie2weima   条码和二维码 ：jie12weima 
 	->qrdecode();
 var_dump($result);
 
